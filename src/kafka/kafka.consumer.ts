@@ -18,7 +18,9 @@ export class KafkaConsumerService implements OnModuleInit {
 
     await this.consumer.run({
       eachMessage: async ({ topic, partition, message }) => {
-        console.log(`New message on topic ${topic}: ${message.value.toString()}`);
+        console.log('New message received');
+        console.log('Topic: '+topic);
+        console.log(`Message: ${message.value.toString()}`);
       },
     });
 
