@@ -25,38 +25,165 @@
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+---
 
-## Project setup
+### **📜 README.md Content for GitHub**
+Copy the below content and paste it into your **GitHub README.md** file:
 
-```bash
-$ npm install
+```md
+# 🚀 NestJS + Kafka + MySQL Setup Guide
+
+This project is a NestJS application integrated with **Kafka** and **MySQL**.
+
+---
+
+## 📌 Installation Guide
+
+### **1️⃣ Install Dependencies**
+Run the following command to install dependencies:
+```sh
+npm install
 ```
 
-## Compile and run the project
+---
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+## **🛠️ Setting Up MySQL**
+1. Download **MySQL** from [MySQL Official Website](https://dev.mysql.com/downloads/installer/).
+2. Start MySQL service.
+3. Create a database:
+```sql
+CREATE DATABASE nestcrud;
 ```
 
-## Run tests
+---
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+## **📡 Setting Up Apache Kafka**
+### **Windows Installation**
+1. Download **Kafka** from [Apache Kafka](https://kafka.apache.org/downloads).
+2. Extract Kafka and **navigate to the Kafka folder**:
+```sh
+cd kafka
 ```
+3. Start **Zookeeper**:
+```sh
+bin/windows/zookeeper-server-start.bat config/zookeeper.properties
+```
+4. Start **Kafka Broker**:
+```sh
+bin/windows/kafka-server-start.bat config/server.properties
+```
+5. Create Kafka Topic:
+```sh
+bin/windows/kafka-topics.bat --create --topic product-topic --bootstrap-server localhost:9092
+```
+
+### **Linux/Mac Installation**
+1. Install Kafka:
+```sh
+wget https://downloads.apache.org/kafka/3.5.0/kafka_2.13-3.5.0.tgz
+tar -xzf kafka_2.13-3.5.0.tgz
+cd kafka_2.13-3.5.0
+```
+2. Start **Zookeeper**:
+```sh
+bin/zookeeper-server-start.sh config/zookeeper.properties
+```
+3. Start **Kafka Broker**:
+```sh
+bin/kafka-server-start.sh config/server.properties
+```
+4. Create Kafka Topic:
+```sh
+bin/kafka-topics.sh --create --topic product-topic --bootstrap-server localhost:9092
+```
+
+---
+
+## **📝 Configure `.env` File**
+Create a **`.env`** file in the root directory and add:
+```env
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASS=yourpassword
+DB_NAME=nestcrud
+KAFKA_BROKER=localhost:9092
+```
+
+---
+
+## **💾 Run Migrations**
+Run the following command to apply database migrations:
+```sh
+npm run migrate:up
+```
+
+---
+
+## **🚀 Start the Application**
+Run the NestJS app in development mode:
+```sh
+npm run start:dev
+```
+
+---
+
+## **📡 Testing Kafka**
+### **1️⃣ Sending a Message**
+Use `curl` or **Postman** to send a message:
+```sh
+curl -X POST http://localhost:3000/products -H "Content-Type: application/json" -d '{"name": "Test Product", "price": 100}'
+```
+
+### **2️⃣ Check Kafka Consumer Logs**
+Run:
+```sh
+npm run start:dev
+```
+If Kafka is working correctly, you should see this in the logs:
+```
+✅ Kafka Consumer connected
+📩 New message received
+📝 Topic: product-topic
+📜 Message: {"name": "Test Product", "price": 100}
+```
+
+---
+
+## **📌 Git Commands to Push Code to GitHub**
+Run the following commands **inside your project folder** to push the project to GitHub:
+
+```sh
+git init  # Initialize Git
+git add .  # Add all files
+git commit -m "Initial commit"  # Commit files
+git branch -M main  # Rename the default branch to main
+git remote add origin https://github.com/your-username/nestjs-kafka-mysql.git  # Link repo
+git push -u origin main  # Push code to GitHub
+```
+
+---
+
+## **🎯 Additional Commands**
+| Command | Description |
+|----------|------------|
+| `npm run start` | Start the application normally |
+| `npm run start:dev` | Start the application in development mode |
+| `npm run migrate:up` | Run database migrations |
+
+---
+
+## **📜 License**
+This project is **open-source** and available under the **MIT License**.
+
+---
+
+### **💬 Need Help?**
+If you have any issues, feel free to create an **Issue** in the repository.
+
+---
+
+Now, **commit** this `README.md` in GitHub, and your repository will have a **clear setup guide** for anyone who clones it! 🚀🔥 Let me know if you need any modifications.
 
 ## Deployment
 
