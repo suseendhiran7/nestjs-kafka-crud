@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",  // or "ES6"
+    "module": "commonjs",  // Use "commonjs" to support module system
+    "moduleResolution": "node",  // Resolve modules the Node.js way
+    "experimentalDecorators": true,  // Enable support for decorators
+    "emitDecoratorMetadata": true,  // Enable metadata reflection for decorators
+    "strict": false,  // TypeScript's strict mode (helps with stricter type checking)
+    "esModuleInterop": true,  // Enable interoperability between ES and CommonJS modules
+    "skipLibCheck": true,  // Skip checking declaration files, reduces build time
+    "outDir": "./dist",  // Output folder for compiled files
+    "rootDir": "./src"  // Root directory of your source code
+  },
+  "include": [
+    "src/**/*"  // Include all files inside the src folder
+  ]
+}
