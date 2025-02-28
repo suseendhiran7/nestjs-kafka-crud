@@ -144,7 +144,7 @@ If Kafka is working correctly, you should see this in the logs:
 ```
 ✅ Kafka Consumer connected
 📩 New message received
-📝 Topic: product-topic
+📝 Topic: product-created
 📜 Message: {"name": "Test Product", "price": 100}
 ```
 
