@@ -26,5 +26,4 @@ export class KafkaConsumerService implements OnModuleInit {
 
     console.log('Kafka Consumer has started.');
   }
-  
 }
